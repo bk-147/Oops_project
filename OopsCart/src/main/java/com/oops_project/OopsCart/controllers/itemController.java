@@ -1,6 +1,7 @@
 package com.oops_project.OopsCart.controllers;
 
 import com.oops_project.OopsCart.models.Item;
+import com.oops_project.OopsCart.models.addItem;
 import com.oops_project.OopsCart.services.itemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class itemController {
 
 
     @PostMapping("/Items")
-    public Item createItem(@RequestBody Item item){
+    public Item createItem(@RequestBody addItem item){
 
         return service.addItem(item);
     }

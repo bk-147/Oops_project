@@ -13,10 +13,15 @@ public class Item {
     @Field
     private int price;
 
-    public Item(String id,String name,int price){
+    @Field
+    private int quantity;
+
+
+    public Item(String id,String name,int price,int quantity){
         this.id = id;
         this.name = name;
         this.price = price;
+        this.quantity = quantity;
 
     }
 
@@ -50,6 +55,14 @@ public class Item {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     @Override

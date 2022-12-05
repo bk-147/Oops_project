@@ -1,6 +1,7 @@
 package com.oops_project.OopsCart.services;
 
 import com.oops_project.OopsCart.models.Item;
+import com.oops_project.OopsCart.models.addItem;
 import com.oops_project.OopsCart.repositories.itemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,10 +21,17 @@ public class itemService {
     //CRUD operation go here
 
     //Saving in DB
-    public Item addItem(Item item){
-        item.setId(UUID.randomUUID().toString());
+    public Item addItem(addItem addItemobj){
 
-        return itemrepo.save(item);
+        if(addItemobj.Admin.getAdminkey().equals("007")){
+
+            addItemobj.item.setId(UUID.randomUUID().toString());
+
+
+            return itemrepo.save(addItemobj.item);
+        }
+        else{return null;}
+
     }
 
     //Reading from DB
@@ -34,6 +42,36 @@ public class itemService {
     public Item findItemById(String s){
         return itemrepo.findById(s).get();
     }
+
+    public void remove(addItem addItemobj){
+
+        if(addItemobj.Admin.getAdminkey().equals("007")){
+
+
+
+             itemrepo.delete(addItemobj.item);
+        }
+
+
+    }
+    public Item modifyItem(addItem addItemobj){
+
+        if(addItemobj.Admin.getAdminkey().equals("007")){
+
+            Item item = itemrepo.findById(addItemobj.item.getId()).get();
+            item.setPrice(addItemobj.item.getPrice());
+            item.setName(addItemobj.item.getName());
+            item.setQuantity(addItemobj.item.getQuantity());
+
+            return itemrepo.save(item);
+        }
+        else{return null;}
+
+    }
+
+
+
+
 
 
 }
