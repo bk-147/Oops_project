@@ -35,6 +35,17 @@ public class itemController {
         return service.findItemById(id);
     }
 
+    @PostMapping("/Items/delete")
+    public void deleteitem(@RequestBody addItem adi){
+        service.remove(adi);
+    }
+
+    @PostMapping("/Items/modify")
+    public Item modify(@RequestBody addItem adi){
+
+        return service.modifyItem(adi);
+    }
+
 
 }
 

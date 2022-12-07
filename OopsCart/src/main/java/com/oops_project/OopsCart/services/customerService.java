@@ -1,6 +1,8 @@
 package com.oops_project.OopsCart.services;
 
+import com.oops_project.OopsCart.models.AdminDeleteUser;
 import com.oops_project.OopsCart.models.Customer;
+import com.oops_project.OopsCart.models.admin;
 import com.oops_project.OopsCart.repositories.customerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,7 @@ public class customerService {
 
     @Autowired
     private customerRepository customer_repo;
+
 
     //registering a new customer
     public Customer register(Customer customer){
@@ -49,8 +52,13 @@ public class customerService {
     }
 
     //get all customers
-    public List<Customer> getCustomers(){
-        return customer_repo.findAll();
+    public List<Customer> getCustomers(admin Admin){
+        if(Admin.getAdminkey().equals("007")){
+            return customer_repo.findAll();
+        }
+        else{
+            return null;
+        }
     }
 
     //get customer by id
@@ -63,5 +71,13 @@ public class customerService {
         customer_repo.delete(customer);
     }
 
+    // admin delete customer
+    public void adminDeleteCustomer(AdminDeleteUser adu){
+        if(adu.Admin.getAdminkey().equals("007")){
+            customer_repo.delete(adu.customer);
+        }
+
+
+    }
 
 }

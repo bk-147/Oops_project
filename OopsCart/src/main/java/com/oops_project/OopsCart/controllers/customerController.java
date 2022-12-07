@@ -1,8 +1,6 @@
 package com.oops_project.OopsCart.controllers;
 
-import com.oops_project.OopsCart.models.Customer;
-import com.oops_project.OopsCart.models.login;
-import com.oops_project.OopsCart.models.updateCustomer;
+import com.oops_project.OopsCart.models.*;
 import com.oops_project.OopsCart.services.customerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,9 +29,9 @@ public class customerController {
         Login.pwd= "1234";
         return Login;
     }
-    @GetMapping("/Customers")
-    public List<Customer> getCustom(){
-        return service.getCustomers();
+    @PostMapping("/Customers")
+    public List<Customer> getCustom(@RequestBody admin Admin){
+        return service.getCustomers(Admin);
     }
 
 
@@ -50,5 +48,17 @@ public class customerController {
         return service.updateCustomer(customerinfo.customer,customerinfo.password, customerinfo.address,customerinfo.name,customerinfo.email);
 
     }
+
+    @PostMapping("/admin/deleteCustomer")
+    public void admindeletecustomer(@RequestBody AdminDeleteUser adu){
+        service.adminDeleteCustomer(adu);
+    }
+
+    @PostMapping("/customer/deleteCustomer")
+    public  void deleteCustomer(@RequestBody Customer customer){
+
+        service.deleteCustomer(customer);
+    }
+
 
 }

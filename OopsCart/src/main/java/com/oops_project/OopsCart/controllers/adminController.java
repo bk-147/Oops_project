@@ -3,6 +3,7 @@ package com.oops_project.OopsCart.controllers;
 
 import com.oops_project.OopsCart.models.*;
 import com.oops_project.OopsCart.services.adminService;
+import com.oops_project.OopsCart.services.orderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +18,9 @@ public class adminController {
 
     @Autowired
     private adminService service;
+
+    @Autowired
+    private orderService ordservice;
 
     @PostMapping("/admin/login")
     public admin loginCustomer(@RequestBody login userinfo){
@@ -45,5 +49,10 @@ public class adminController {
     public admin registerAdmin(@RequestBody admin Admin){
 
         return service.register(Admin);
+    }
+
+    @PostMapping("/admin/vieworders")
+    public List<Order> vieworders(admin Admin){
+        return ordservice.findAllOrder(Admin);
     }
 }
