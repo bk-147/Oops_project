@@ -23,7 +23,7 @@ public class customerService {
     public Customer login(String userid,String pass){
         Customer customer = customer_repo.findById(userid).get();
         if( pass.equals(customer.getPassword())){
-
+            customer.setLoginStatus(true);
             return customer;
         }
         else{return null;}

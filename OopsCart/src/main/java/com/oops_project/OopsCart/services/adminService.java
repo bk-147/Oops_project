@@ -1,9 +1,12 @@
 package com.oops_project.OopsCart.services;
 import com.oops_project.OopsCart.models.Customer;
+import com.oops_project.OopsCart.models.Item;
 import com.oops_project.OopsCart.models.admin;
 import com.oops_project.OopsCart.repositories.adminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class adminService {
@@ -46,4 +49,11 @@ public class adminService {
         }
 
     }
+
+
+    //remove this later
+    public List<admin> findAlladmin(){
+        return admin_repo.findAll();
+    }
+
 }

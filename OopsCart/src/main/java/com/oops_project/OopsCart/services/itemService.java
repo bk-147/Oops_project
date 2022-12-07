@@ -62,6 +62,8 @@ public class itemService {
             item.setPrice(addItemobj.item.getPrice());
             item.setName(addItemobj.item.getName());
             item.setQuantity(addItemobj.item.getQuantity());
+            item.setDescription(addItemobj.item.getDescription());
+            item.setImage(addItemobj.item.getImage());
 
             return itemrepo.save(item);
         }
