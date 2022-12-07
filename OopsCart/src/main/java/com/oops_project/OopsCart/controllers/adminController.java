@@ -23,9 +23,10 @@ public class adminController {
     private orderService ordservice;
 
     @PostMapping("/admin/login")
-    public admin loginCustomer(@RequestBody login userinfo){
-
-        return service.login(userinfo.username, userinfo.pwd);
+    public admin loginCustomer(@RequestBody admininfo userinfo){
+        if(userinfo.key.equals("007")){
+            return service.login(userinfo.username, userinfo.pwd);}
+        else{return null;}
     }
 
     @PostMapping("/updateAdmin")
