@@ -44,8 +44,8 @@ public class customerController {
     }
 
     @PostMapping("/updateCustomer")
-    public Customer update_customer(@RequestBody updateCustomer customerinfo){
-        return service.updateCustomer(customerinfo.customer,customerinfo.password, customerinfo.address,customerinfo.name,customerinfo.email,customerinfo.WalletBalance);
+    public Customer update_customer(@RequestBody Customer customerinfo){
+        return service.updateCustomer(customerinfo);
 
     }
 

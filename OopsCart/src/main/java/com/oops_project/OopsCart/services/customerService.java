@@ -34,11 +34,11 @@ public class customerService {
     }
 
     //update profile
-    public Customer updateCustomer(Customer customer,String password,String address,String name,String email,Float wallet){
+    public Customer updateCustomer(Customer customer){
 
         Customer customer1 = customer_repo.findById(customer.getUserId()).get();
         if(customer1.getPassword().equals(customer.getPassword())){
-            customer.updateProfile(password,address,name,email,wallet);
+            customer1.updateProfile(customer.getPassword(),customer.getAddress(),customer.getName(),customer.getEmail(),customer.getWalletBalance());
             return customer_repo.save(customer);
         }
         else{
