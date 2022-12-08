@@ -45,7 +45,7 @@ public class customerController {
 
     @PostMapping("/updateCustomer")
     public Customer update_customer(@RequestBody updateCustomer customerinfo){
-        return service.updateCustomer(customerinfo.customer,customerinfo.password, customerinfo.address,customerinfo.name,customerinfo.email);
+        return service.updateCustomer(customerinfo.customer,customerinfo.password, customerinfo.address,customerinfo.name,customerinfo.email,customerinfo.WalletBalance);
 
     }
 
@@ -55,7 +55,7 @@ public class customerController {
     }
 
     @PostMapping("/customer/deleteCustomer")
-    public  void deleteCustomer(@RequestBody Customer customer){
+    public  void deleteCustomer(@RequestBody login customer){
 
         service.deleteCustomer(customer);
     }

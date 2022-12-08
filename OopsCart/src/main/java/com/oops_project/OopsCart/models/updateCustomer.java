@@ -6,5 +6,6 @@ public class updateCustomer {
     public String address;
     public String name;
     public String email;
+    public Float WalletBalance;
 
 }

@@ -24,11 +24,12 @@ public class Customer extends User {
         super();
     }
 
-    public void updateProfile(String password, String address, String name, String email) {
+    public void updateProfile(String password, String address, String name, String email,Float walletBalance) {
         this.setPassword(password);
         this.setName(name);
         this.setEmail(email);
         this.setAddress(address);
+        this.setWalletBalance(walletBalance);
 
 
     }

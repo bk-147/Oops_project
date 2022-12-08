@@ -3,6 +3,7 @@ package com.oops_project.OopsCart.services;
 import com.oops_project.OopsCart.models.AdminDeleteUser;
 import com.oops_project.OopsCart.models.Customer;
 import com.oops_project.OopsCart.models.admin;
+import com.oops_project.OopsCart.models.login;
 import com.oops_project.OopsCart.repositories.customerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,11 +34,11 @@ public class customerService {
     }
 
     //update profile
-    public Customer updateCustomer(Customer customer,String password,String address,String name,String email){
+    public Customer updateCustomer(Customer customer,String password,String address,String name,String email,Float wallet){
 
         Customer customer1 = customer_repo.findById(customer.getUserId()).get();
         if(customer1.getPassword().equals(customer.getPassword())){
-            customer.updateProfile(password,address,name,email);
+            customer.updateProfile(password,address,name,email,wallet);
             return customer_repo.save(customer);
         }
         else{
@@ -67,8 +68,13 @@ public class customerService {
     }
 
     //delete account
-    public void deleteCustomer(Customer customer){
-        customer_repo.delete(customer);
+    public void deleteCustomer(login customer){
+        Customer customer1 = customer_repo.findById(customer.username).get();
+        if(customer1.getPassword().equals(customer.pwd)){
+            customer_repo.delete(customer1);
+        }
+
+
     }
 
     // admin delete customer
