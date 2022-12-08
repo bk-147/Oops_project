@@ -38,7 +38,7 @@ public class customerService {
 
         Customer customer1 = customer_repo.findById(customer.getUserId()).get();
         if(customer1.getPassword().equals(customer.getPassword())){
-            customer1.updateProfile(customer.getPassword(),customer.getAddress(),customer.getName(),customer.getEmail(),customer.getWalletBalance());
+            customer1.updateProfile(customer.getPassword(),customer.getAddress(),customer.getName(),customer.getEmail(),customer.getWalletBalance(),customer.getCart(),customer.getCartTotal());
             return customer_repo.save(customer);
         }
         else{

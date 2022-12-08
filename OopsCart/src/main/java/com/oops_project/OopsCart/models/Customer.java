@@ -3,6 +3,8 @@ package com.oops_project.OopsCart.models;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.List;
+
 @Document("Customers")
 public class Customer extends User {
     @Field
@@ -12,6 +14,11 @@ public class Customer extends User {
     @Field
     private Float WalletBalance;
 
+    @Field
+    private List cart;
+
+    @Field
+    private int cartTotal;
 
     public Customer(String userId, String password, String name, String email, String phone, String address) {
         super(userId, password, name, email, phone);
@@ -24,12 +31,14 @@ public class Customer extends User {
         super();
     }
 
-    public void updateProfile(String password, String address, String name, String email,Float walletBalance) {
+    public void updateProfile(String password, String address, String name, String email,Float walletBalance,List cart,int cartTotal) {
         this.setPassword(password);
         this.setName(name);
         this.setEmail(email);
         this.setAddress(address);
         this.setWalletBalance(walletBalance);
+        this.setCart(cart);
+        this.setCartTotal(cartTotal);
 
 
     }
@@ -58,5 +67,19 @@ public class Customer extends User {
         WalletBalance = walletBalance;
     }
 
+    public List getCart() {
+        return cart;
+    }
 
+    public void setCart(List cart) {
+        this.cart = cart;
+    }
+
+    public int getCartTotal() {
+        return cartTotal;
+    }
+
+    public void setCartTotal(int cartTotal) {
+        this.cartTotal = cartTotal;
+    }
 }
